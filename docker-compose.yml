@@ -1,0 +1,16 @@
+version: '2'
+services:
+  ui:
+    build: .
+    volumes:
+      - ./my_package:/code/my_package:ro
+      - ./setup.py:/code/setup.py:ro
+      - ./app/my_app:/code/app:ro
+      # For debug
+      #- ../tb-api/tb_api:/code/tb-api/tb_api:ro
+      #- ../tb-api/setup.py:/code/tb-api/setup.py:ro
+    #environment:
+    #  SLEEP: 5
+    #  EXTRAS_REQUIRE: api
+    ports:
+      - 7000:80
