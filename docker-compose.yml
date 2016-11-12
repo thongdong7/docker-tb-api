@@ -1,7 +1,8 @@
 version: '2'
 services:
   ui:
-    build: .
+    image: thongdong7/tb-api
+#    build: .
     volumes:
       - ./my_package:/code/my_package:ro
       - ./setup.py:/code/setup.py:ro
