@@ -4,7 +4,7 @@ set -e
 
 #ENV=dev
 APP="."
-if [ $ENV == 'dev' ]; then
+if [ "$ENV" == 'dev' ]; then
   # Application name
   APP=app
 
@@ -23,11 +23,8 @@ if [ $ENV == 'dev' ]; then
     echo $INSTALL_CMD
 
     $INSTALL_CMD
-
   fi
-
 fi
-
 
 if [ "$ENV" != "dev" ]; then
   # Application is in current directory
@@ -41,7 +38,7 @@ if [ "$COMMAND" != "" ]; then
   # Support inject custom command
   echo Run $COMMAND...
 
-  $COMMAND
+  bash -c "$COMMAND"
 fi
 
 if [ "$ENV" == "dev" ]; then
