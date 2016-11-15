@@ -10,15 +10,26 @@ if [ $ENV == 'dev' ]; then
     ./venv/bin/pip install -e tb-api
   fi
 
-  echo "Install main code ..."
-  INSTALL_CMD="./venv/bin/pip install -e ."
-  if [ "$EXTRAS_REQUIRE" != "" ]; then
-    INSTALL_CMD=$INSTALL_CMD[$EXTRAS_REQUIRE]
-  fi
-  
-  echo $INSTALL_CMD
+  if [ -e setup.py ]; then
+    echo "Install main code ..."
+    INSTALL_CMD="./venv/bin/pip install -e ."
+    if [ "$EXTRAS_REQUIRE" != "" ]; then
+      INSTALL_CMD=$INSTALL_CMD[$EXTRAS_REQUIRE]
+    fi
 
-  $INSTALL_CMD
+    echo $INSTALL_CMD
+
+    $INSTALL_CMD
+
+  fi
+
+fi
+
+if [ "$COMMAND" != "" ]; then
+  # Support inject custom command
+  echo Run $COMMAND...
+
+  $COMMAND
 fi
 
 # Run
