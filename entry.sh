@@ -25,6 +25,12 @@ if [ $ENV == 'dev' ]; then
 
 fi
 
+
+if [ "$ENV" != "dev" ]; then
+  echo Install tb-api
+  ./venv/bin/pip install tb-api --upgrade
+fi
+
 if [ "$COMMAND" != "" ]; then
   # Support inject custom command
   echo Run $COMMAND...
