@@ -4,9 +4,11 @@ set -e
 
 #ENV=dev
 APP="."
+API_PARAMS=""
 if [ "$ENV" == 'dev' ]; then
   # Application name
   APP=app
+  API_PARAMS="--debug"
 
   if [ -e tb-api ]; then
     echo "Install tb-api from source code..."
@@ -31,7 +33,7 @@ if [ "$ENV" != "dev" ]; then
   APP="."
 
   echo Install tb-api
-  ./venv/bin/pip install tb-api --upgrade
+  ./venv/bin/pip install tb-api[server] --upgrade
 fi
 
 if [ "$COMMAND" != "" ]; then
@@ -51,7 +53,7 @@ echo "Application folder: $APP"
 set +e
 while true; do
   echo "Start api..."
-  ./venv/bin/api --debug --port 80 ioc -a $APP || { echo API failed; }
+  ./venv/bin/api $API_PARAMS --port 80 ioc -a $APP || { echo API failed; }
 
   echo "API stop. Will be started again after $SLEEP seconds..."
   sleep $SLEEP
