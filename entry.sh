@@ -10,7 +10,7 @@ if [ "$ENV" == 'dev' ]; then
 
   if [ -e tb-api ]; then
     echo "Install tb-api from source code..."
-    ./venv/bin/pip install -e tb-api
+    ./venv/bin/pip install -e tb-api[server]
   fi
 
   if [ -e setup.py ]; then
