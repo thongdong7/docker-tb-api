@@ -12,7 +12,7 @@ services:
       #- ../tb-api/setup.py:/code/tb-api/setup.py:ro
 
     #environment:
-    #  ENV: dev
+    #  ENV: local
     #  SLEEP: 5
     #  EXTRAS_REQUIRE: api
     # Running custom command
