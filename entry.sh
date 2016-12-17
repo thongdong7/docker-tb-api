@@ -5,7 +5,7 @@ set -e
 #ENV=dev
 APP="."
 API_PARAMS=""
-if [ "$ENV" == 'dev' ]; then
+if [ "$ENV" == 'local' ]; then
   # Application name
   APP=app
   API_PARAMS="--debug"
@@ -28,7 +28,7 @@ if [ "$ENV" == 'dev' ]; then
   fi
 fi
 
-if [ "$ENV" != "dev" ]; then
+if [ "$ENV" != "local" ]; then
   # Application is in current directory
   APP="."
 
@@ -43,7 +43,7 @@ if [ "$COMMAND" != "" ]; then
   bash -c "$COMMAND"
 fi
 
-if [ "$ENV" == "dev" ]; then
+if [ "$ENV" == "local" ]; then
   APP=app
 fi
 
